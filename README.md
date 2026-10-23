@@ -1,7 +1,7 @@
 # Flocking AI
 Bruno Chen Yongjian
 
-Cena em Assets -> Scenes -> Flock
+Assets/Scenes/Flock.unity
 
 # Parâmetro
 Peso da separação (separationWeight)	1.5
