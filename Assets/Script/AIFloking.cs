@@ -16,6 +16,10 @@ public class AIFloking : MonoBehaviour
     public float separationRadius = 1.5f;
     public LayerMask boidLayer;
 
+    [Header("Limite de vizinhos")]
+    [Min(1)]
+    public int maxFlockNeighbors = 20;
+
     [Header("Pesos")]
     public float separationWeight = 1.5f;
     public float alignmentWeight = 1f;
@@ -113,11 +117,19 @@ public class AIFloking : MonoBehaviour
             float neighborRadiusSquared = neighborRadius * neighborRadius;
             float separationRadiusSquared = separationRadius * separationRadius;
 
-            for (int x = -cellRange; x <= cellRange; x++)
+            int maxNeighbors = Mathf.Max(1, maxFlockNeighbors);
+
+            for (int x = -cellRange;
+                 x <= cellRange && neighborCount < maxNeighbors;
+                 x++)
             {
-                for (int y = -cellRange; y <= cellRange; y++)
+                for (int y = -cellRange;
+                     y <= cellRange && neighborCount < maxNeighbors;
+                     y++)
                 {
-                    for (int z = -cellRange; z <= cellRange; z++)
+                    for (int z = -cellRange;
+                         z <= cellRange && neighborCount < maxNeighbors;
+                         z++)
                     {
                         Vector3Int cellPosition = currentCell +
                             new Vector3Int(x, y, z);
@@ -128,7 +140,9 @@ public class AIFloking : MonoBehaviour
                         if (cell == null)
                             continue;
 
-                        for (int i = 0; i < cell.Count; i++)
+                        for (int i = 0;
+                             i < cell.Count && neighborCount < maxNeighbors;
+                             i++)
                         {
                             AIFloking other = cell[i];
 
