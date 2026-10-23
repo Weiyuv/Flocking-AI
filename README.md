@@ -5,11 +5,17 @@ Cena em Assets -> Scenes -> Flock
 
 # Parâmetro
 Peso da separação (separationWeight)	1.5
+
 Peso do alinhamento (alignmentWeight)	1.0
+
 Peso da coesão (cohesionWeight)	1.0
+
 Raio de percepção (neighborRadius)	5.0
+
 Raio de separação (separationRadius)	1.5
+
 Velocidade máxima (maxSpeed)	5.0
+
 Força máxima (maxForce)	8.0
 
 
